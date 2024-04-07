@@ -1,4 +1,13 @@
 # XSS-Payload-Generation
+
+## Project Goal/Ideas
+The goal of this project is to explore various ways we can automate the generation of XSS payloads. Some ideas I've been brainstorming include:
+1) Analyzing the surrounding HTML similar to how an attacker would by understanding what characters are needed to escape out of the leading HTML and absorb any remaining HTML. (Initial iteration will be similar to this)
+2) Maintain a collection of XSS payloads and how they were useed to perform a "similarity" search to find payloads that may work given a certain context.
+3) Create an ML model trained on XSS payloads for various contexts: Take in the HTML/JavaScript element where the user input is reflected --> Produce an XSS payload that would work.
+
+Ideas 1 and 2 could reasonably be implemented, idea 3 would be more complicated. It's also not nearly as practical but could be pretty cool.
+
 ## Intelligent Payload Generation
 There is no standard way for parameters to be reflected back onto the HTML. The reflection could appear in various different HTML elements, different attributes within elements, or even as text on the page itself. Somehow automating the process of analyzing the surrounding HTML to then craft a payload that both follows the rules of the input and the rules of HTML to create a valid injection will be a vital step in this project.  
 
