@@ -19,6 +19,9 @@ __*Very* High Level Overview of Process__
 4) Determine what HTML is to the right of the reflection point and absorb that remaining HTML
 
 ## Development Updates ##
+### 4/8/2024 ###
+The tool is able to create an XSS payload that escapes out of the leading HTML and absorbs any trailing/dangling HTML. Further work will be done trim uncessary characters.
+  
 ### 4/6/2024 ###
 The initial iteration of this tool will be focused on injecting payloads within an HTML element tag. The tool will attempt to determine the characters needed to escape and absorb the surrouning HTML and insert the injection. For example:
 
