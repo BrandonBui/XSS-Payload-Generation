@@ -17,6 +17,21 @@ def find_reflections(html: str, unique_val: str) -> list[str]:
     return reflections
 
 '''
+determine_escape_chars(html_tag: str, unique_val: str) -> str
+
+Determine what is to the right of the reflection point which we will use to 
+terminate the element in which the reflection occurs.
+'''
+def determine_escape_chars(html_tag: str, unique_val: str) -> str:
+    return html_tag.split(unique_val, 2)[1]
+
+def determine_absorb_chars(html_tag: str, unique_val: str) -> str:
+    return html_tag.split(unique_val, 2)[0]
+
+def create_injection(html_tag: str, unique_val: str, payload: str) -> str:
+    return f"{determine_escape_chars(html_tag, unique_val)}{payload}{determine_absorb_chars(html_tag, unique_val)}"
+
+'''
 main()
 
 The main method
@@ -43,6 +58,11 @@ def main():
         
         reflections = find_reflections(html, unique_value) # Get list of reflection points
         print(reflections)
+        
+        for reflection in reflections:
+            inj = create_injection(reflection, unique_value, "<script>alert()</script>")
+            print(inj)
+            
         browser.close()
 
 main()
